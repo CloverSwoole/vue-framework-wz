@@ -31,7 +31,7 @@ export const constantRouterMap = [
 ]
 
 export default new Router({
-  mode: 'hash', 
+  // mode: 'hash',
   linkActiveClass: 'open active',
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap
@@ -48,6 +48,7 @@ export const asyncRouterMap = [
     children: [
      {path: '/dashboard',name: 'Dashboard',icon:'speedometer',component: _import('Dashboard')},
      {path: '/introduction',name: '介绍',icon:'thumbsup',component: _import('Introduction')},
+     {path: '/demo',name: '演示',icon:'thumbsup',component: _import('demo')},
      {path: '/components',name: 'component组件',redirect: '/components/buttons',icon:'bookmark',
         component: {render (c) { return c('router-view') }},
         children: [ {path: 'buttons',name: 'Buttons按钮',icon:'social-youtube',component: _import('components/Buttons'), hidden:false, },
@@ -66,19 +67,19 @@ export const asyncRouterMap = [
                     {path: 'upload',name: 'Upload上传',icon:'ios-cloud-upload-outline',component: _import('components/Upload')},
                   ]
       },
-       {path: '/charts',name: 'echart图表',redirect: '/charts/shopchart',icon:'pie-graph',
+     {path: '/charts',name: 'echart图表',redirect: '/charts/shopchart',icon:'pie-graph',
         component: {render (c) { return c('router-view') }},
         children: [ {path: 'shopchart',name: '商场统计图表',icon:'stats-bars',component: _import('charts/ShopChart'), hidden:false, },
                     {path: 'radarchart',name: '雷达图',icon:'arrow-graph-up-right',component: _import('charts/RadarChart')},
                     {path: 'cakechart',name: '蛋糕销量图表',icon:'ios-analytics',component: _import('charts/CakeChart')}
                   ]
       },
-      {path: '/table', name: '表格综合实例',icon:'ios-paper',component: _import('Table'),meta: { role: ['admin'] }},
+     {path: '/table', name: '表格综合实例',icon:'ios-paper',component: _import('Table'),meta: { role: ['admin'] }},
       {path: '/jsontree', name: 'JSON视图',icon:'merge',component: _import('JsonTree')},
       {path: '/tabledetail/:id',name: 'TableDetail', hidden:true, component: _import('TableDetail')},
       {path: '/tinymce',name: 'Tinymce编辑器',icon:"android-document",component: _import('Tinymce')},
       {path: '/markdown',name: 'Markdown',icon:"android-list",component: _import('Markdown')},
-      
+
     ]
   },
 
@@ -91,11 +92,10 @@ export const asyncRouterMap = [
     children: [
      {path: '/home1/dashboard',name: 'Dashboard2',icon:'speedometer',component: _import('Dashboard2')},
      {path: '/home1/introduction',name: '介绍2',icon:'thumbsup',component: _import('Introduction')},
-    
+
     ]
   },
 
-
   { path: '*', redirect: '/pages/404', hidden: true }
-  
+
 ];

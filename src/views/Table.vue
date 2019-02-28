@@ -3,7 +3,7 @@
 
           <Row>
         <Col :md="24" >
-           
+
 
 
 
@@ -14,7 +14,7 @@
 
 
    <Button type="primary" size="large"  icon="ios-cloud-upload-outline" id='pickfiles' @click="qiniu_upload" style="padding-bottom:5px;">上传文件</Button>
-         <Progress :percent="progresscount" :status="progresstatus" style="width=90%;vertical-align:middle" v-if="progresshow">
+         <Progress :percent="progresscount" :status="progresstatus" style="width:90%;vertical-align:middle" v-if="progresshow">
                 <Icon type="checkmark-circled" v-if="progresscount==100"></Icon>
                 <span v-if="progresscount===100">上传成功</span>
                 <Icon type="close-circled" v-if="progresstatus==='wrong'"></Icon>
@@ -22,11 +22,11 @@
                 <span style="position:absolute;left:50%;top:-5px;" v-if="progresscount!==0&&progresscount!=100">{{progressspeed}}</span>
               </Progress>
         </div>
-           
+
             <div style="position:relative;">
-              
-          
-                
+
+
+
                  <Table  :columns="columns7" :data="page_video_list" ref="table"></Table>
 
                   <div style="position:absolute;top:0px;width:100%;height:100%;display: flex;
@@ -47,13 +47,13 @@
 
         <p>轻松完成业务需求，再也不用被产品催了</p>
             </div>
-             
+
         </Col>
 
 
         <Col :md="12">
-           
- 
+
+
 
 
         </Col>
@@ -65,7 +65,7 @@
 
 
 
-    </Row> 
+    </Row>
 
 
 </div>
@@ -121,10 +121,10 @@
                   const s=Math.floor(video_duration%60);
                   if(minute<10)
                     video_duration="00:0"+minute;
-                  else 
+                  else
                     video_duration="00:"+minute;
 
-                  
+
                   if(s<10)
                   video_duration=video_duration+":0"+s;
 
@@ -134,7 +134,7 @@
               }
               else if (video_duration>60*60&&video_duration<60*60*60){
                   const hour=Math.floor(video_duration/3600);
-                 
+
                   const minute=Math.floor((video_duration%3600)/60);
                     const s=Math.floor((video_duration%3600)%60);
                    if(hour<10)
@@ -144,12 +144,12 @@
 
                    if(minute<10)
                     video_duration=video_duration+":0"+minute;
-                  else 
+                  else
                     video_duration=video_duration+":"+minute;
-                
+
                    if(s<10)
                     video_duration=video_duration+":0"+s;
-                  else 
+                  else
                     video_duration=video_duration+":"+s;
 
 
@@ -174,7 +174,7 @@
       runtimes: 'html5,flash,html4',      // 上传模式，依次退化
       browse_button: 'pickfiles',         // 上传选择的点选按钮，必需
       uptoken_func: function(){    // 在需要获取uptoken时，该方法会被调用
-         // return "123"; 
+         // return "123";
       },
       get_new_uptoken: false,             // 设置上传文件的时候是否每次都重新获取新的uptoken
       // downtoken_url: '/downtoken',
@@ -257,7 +257,7 @@
           },
           'Error': function(up, err, errTip) {
                  //上传出错时，处理相关的事情
-                
+
 
           },
           'UploadComplete': function() {
@@ -350,7 +350,7 @@ export default {
                                  title: '上传时间',
                               ellipsis:'true',
                                 key: 'timestamp',
-                             
+
                           },
 
                            {
@@ -418,7 +418,7 @@ export default {
 
                                 else if(task_status===1)
                                     return h('div', [
-                                      
+
                                           h('Tag', {
                                 props: {
                                     type: 'dot',
@@ -428,7 +428,7 @@ export default {
                                      ]);
                             }
                           },
-                         
+
                           {
                               title: '操作',
                               key: 'action',
@@ -467,8 +467,8 @@ export default {
                                               }
                                           }
                                       }, '删除')
-                                    
-                                      
+
+
                                   ]);
                                 }
                                 else if(task_status===1){
@@ -543,8 +543,8 @@ export default {
                         filename: '排序和过滤后的数据',
                         original: false
                     });
-                } 
-            }        
+                }
+            }
      },
      mounted(){
           const vue=this;
@@ -595,7 +595,7 @@ tr.ivu-table-row-hover td .ivu-tag-dot{
                 background: #e0e3e6;
                 position: relative;
                 top: -20px;
-            };
+            }
         .demo-i-circle-custom span i{
             font-style: normal;
             color: #3f414d;
