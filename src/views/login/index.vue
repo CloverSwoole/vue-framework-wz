@@ -4,7 +4,7 @@
 
     <Form ref="loginForm" autoComplete="on" :model="loginForm" :rules="loginRules"  class="card-box login-form">
         <Form-item prop="email">
-            <Input type="text" v-model="loginForm.email" placeholder="Username" autoComplete="on">
+            <Input type="text" v-model="loginForm.account" placeholder="Account" autoComplete="on">
                 <Icon type="ios-person-outline" slot="prepend" ></Icon>
             </Input>
         </Form-item>
@@ -36,19 +36,19 @@
           // }
         };
         const validatePass = (rule, value, callback) => {
-          if (value.length < 6) {
-            callback(new Error('密码不能小于6位'));
-          } else {
+          // if (value.length < 6) {
+          //   callback(new Error('密码不能小于6位'));
+          // } else {
             callback();
-          }
+          // }
         };
         return {
           loginForm: {
-            email: 'admin',
+            account: '',
             password: ''
           },
           loginRules: {
-            email: [
+              account: [
                 { required: true, trigger: 'blur', validator: validateEmail }
             ],
             password: [
@@ -115,13 +115,14 @@ animate();
           this.$refs.loginForm.validate(valid => {
             if (valid) {
               this.loading = true;
-              this.$store.dispatch('LoginByEmail', this.loginForm).then(() => {
+              this.$store.dispatch('LoginByAccount', this.loginForm).then(() => {
                 this.$Message.success('登录成功');
 
                 this.loading = false;
                 this.$router.push({ path: '/' });
               }).catch(err => {
-                this.$message.error(err);
+                  console.log(err);
+                // this.$message.error(err);
                 this.loading = false;
               });
             } else {

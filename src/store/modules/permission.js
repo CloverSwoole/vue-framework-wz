@@ -32,7 +32,12 @@ function filterAsyncRouter(asyncRouterMap, roles) {
   return accessedRouters
 }
 
-
+/**
+ * 获取当前路由
+ * @param asyncRouterMap
+ * @param to
+ * @returns {*|boolean}
+ */
 function getNowRouter(asyncRouterMap, to) {
   return asyncRouterMap.some(route => {
       if(to.path.indexOf(route.path) !==-1) {
@@ -54,21 +59,33 @@ const permission = {
     siderbar_routers:[],
   },
   mutations: {
+      /**
+       * 设置所有路由
+       * @param state
+       * @param routers
+       * @constructor
+       */
     SET_ROUTERS: (state, routers) => {
       state.addRouters = routers;
       state.routers = constantRouterMap.concat(routers);
       // state.routers.forEach(function(e){
       //     if(e.name==="首页"){
       //     state.siderbar_routers=e;
-            
+
       //     }
 
       // })
 
     },
+      /**
+       * 设置当前路由
+       * @param state
+       * @param to
+       * @constructor
+       */
      SET_NOW_ROUTERS: (state, to) => {
-       
-          
+
+
           // 递归访问 accessedRouters，找到包含to 的那个路由对象，设置给siderbar_routers
           console.log(state.addRouters)
         state.addRouters.forEach(e => {
@@ -76,14 +93,21 @@ const permission = {
            if( getNowRouter(e.children,to)===true)
                   state.siderbar_routers=e;
           }
-      
+
         })
-      
+
 
      }
 
   },
   actions: {
+      /**
+       * 生成动态路由
+       * @param commit
+       * @param data
+       * @returns {Promise<any>}
+       * @constructor
+       */
     GenerateRoutes({ commit }, data) {
       return new Promise(resolve => {
         const { roles } = data
@@ -99,14 +123,19 @@ const permission = {
         resolve();
       })
     },
- 
-  getNowRoutes({ commit }, data) {
-      return new Promise(resolve => {
-        //data => to
-        commit('SET_NOW_ROUTERS', data);
-        resolve();
-      })
-  },
+      /**
+       * 获取当前路由
+       * @param commit
+       * @param data
+       * @returns {Promise<any>}
+       */
+      getNowRoutes({ commit }, data) {
+          return new Promise(resolve => {
+            //data => to
+            commit('SET_NOW_ROUTERS', data);
+            resolve();
+          })
+      },
    },
 };
 

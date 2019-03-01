@@ -5,8 +5,11 @@ import vue from 'vue';
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: process.env.BASE_API, // api的base_url
-  timeout: 5000                  // 请求超时时间
+    baseURL: process.env.BASE_API, // api的base_url
+    timeout: 5000,                  // 请求超时时间
+    headers:{// 自定义头部信息
+        "content-type":"application/json" // 请求内容类型
+    }
 });
 
 // request拦截器
