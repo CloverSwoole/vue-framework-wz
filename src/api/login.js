@@ -12,7 +12,7 @@ export function LoginByAccount(account, password) {
     password
   };
   return fetch({
-    url: '/Admin/Auth/login.html',
+    url: '/Admin/Auth/Index/login.html',
     method: 'post',
     data
   });
@@ -24,7 +24,7 @@ export function LoginByAccount(account, password) {
  */
 export function logout(token) {
   return fetch({
-    url: '/Admin/Auth/logout.html',
+    url: '/Admin/Auth/Index/logout.html',
     method: 'post',
     params: { token }
   });
@@ -36,7 +36,7 @@ export function logout(token) {
  */
 export function getInfo(token) {
   return fetch({
-    url: '/Admin/Auth/get_user_info.html',
+    url: '/Admin/Auth/Index/get_user_info.html',
     method: 'get',
     params: { token }
   });
